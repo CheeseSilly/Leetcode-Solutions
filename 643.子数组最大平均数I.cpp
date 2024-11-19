@@ -5,7 +5,7 @@
 
 class Solution {
 public:
-    double findMaxAverage(vector<int>& nums, int k) {
+    double findMaxAverage(std::vector<int>& nums, int k) {
          auto len=nums.size();
         size_t right=0;
         size_t left=0;
