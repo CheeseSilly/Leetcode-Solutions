@@ -6,7 +6,7 @@ private:
   void dfs(int i, std::vector<std::vector<int>> &isConnected,
            std::vector<bool> &visited) {
     int n = isConnected.size();
-    visited[i] = 0;
+    visited[i] = 1;
     for (int j = 0; j < n; j++) {
       if (isConnected[i][j] && !visited[j]) {
         dfs(j, isConnected, visited);
