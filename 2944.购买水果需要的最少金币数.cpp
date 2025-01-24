@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-  int dfs(int i, int n, vector<int> dp, vector<int> prices) {
+  int dfs(int i, int n, vector<int> &dp, vector<int> &prices) {
     if (2 * i >= n) {
       return prices[i - 1];
     }
