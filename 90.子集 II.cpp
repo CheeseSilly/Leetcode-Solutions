@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include <functional>
-#include <ranges>
 #include <unordered_map>
 
 using namespace std;
@@ -8,7 +7,7 @@ using namespace std;
 class Solution {
 public:
   vector<vector<int>> subsetsWithDup(vector<int> &nums) {
-    ranges::sort(nums);
+    sort(nums.begin(), nums.end());
     int n = nums.size();
     vector<vector<int>> ans;
     vector<int> path;
