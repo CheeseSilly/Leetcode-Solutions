@@ -4,33 +4,36 @@ using namespace std;
 
 class Solution {
 public:
-  bool isPalindrom(string &s, int left, int right) {
-    while (left < right) {
-      if (s[left++] != s[right--]) {
-        return false;
+  int minCut(string s) {
+    int n = s.size();
+    vector pal_memo(n, vector<int>(n, -1)); // -1 表示没有计算过
+    auto is_palindrome = [&](this auto &&is_palindrome, int l, int r) -> bool {
+      if (l >= r) {
+        return true;
       }
-    }
-    return true;
-  }
-  vector<vector<string>> partition(string s) {
-    vector<vector<string>> ans;
-    vector<string> path;
-    int n = s.length();
-    auto dfs = [&](this auto &&dfs, int i, int start) {
-      if (i == n) {
-        ans.emplace_back(path);
-        return;
+      int &res = pal_memo[l][r]; // 注意这里是引用
+      if (res != -1) {           // 之前计算过
+        return res;
       }
-      if (i < n - 1) {
-        dfs(i + 1, start);
-      }
-      if (isPalindrom(s, start, i)) {
-        path.push_back(s.substr(start, i - start + 1));
-        dfs(i + 1, start + 1);
-        path.pop_back();
-      }
+      return res = s[l] == s[r] && is_palindrome(l + 1, r - 1);
     };
-    dfs(0, 0);
-    return ans;
+
+    vector<int> dfs_memo(n, INT_MAX); // INT_MAX 表示没有计算过
+    auto dfs = [&](this auto &&dfs, int r) -> int {
+      if (is_palindrome(0, r)) { // 已是回文串，无需分割
+        return 0;
+      }
+      int &res = dfs_memo[r]; // 注意这里是引用
+      if (res != INT_MAX) {   // 之前计算过
+        return res;
+      }
+      for (int l = 1; l <= r; l++) { // 枚举分割位置
+        if (is_palindrome(l, r)) {
+          res = min(res, dfs(l - 1) + 1); // 在 l-1 和 l 之间切一刀
+        }
+      }
+      return res;
+    };
+    return dfs(n - 1);
   }
 };
