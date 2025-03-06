@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-#include <functional>
-#include <unordered_map>
 
 using namespace std;
 
@@ -38,4 +36,3 @@ public:
     return ans;
   }
 };
-
