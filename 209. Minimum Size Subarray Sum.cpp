@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
     public:
-        int minSubArrayLen(int target, vector<int>& nums) {
+        static auto minSubArrayLen(int target, vector<int>& nums) -> int {
             int ans=INT_MAX;
             int l=0;
             int sum=0;
