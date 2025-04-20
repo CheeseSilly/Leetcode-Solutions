@@ -3,7 +3,7 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
   vector<vector<int>> subsetsWithDup(vector<int> &nums) {
     sort(nums.begin(), nums.end());
     int n = nums.size();
@@ -20,7 +20,7 @@ public:
       int x = nums[i];
       path.push_back(x);
       dfs(i + 1);
-      path.pop_back(); // 恢复现场
+      path.pop_back();  // 恢复现场
 
       // 不选 x，跳过所有等于 x 的数
       // 如果不跳过这些数，会导致「选 x 不选 x'」和「不选 x 选

@@ -3,7 +3,7 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
   vector<int> sortedSquares(vector<int> &nums) {
     for (auto &i : nums) {
       i = i * i;
