@@ -23,6 +23,7 @@ class Solution {
 public:
   std::vector<std::string> binaryTreePaths(TreeNode *root) {
     std::vector<std::string> ans;
+    // use path to store the main route
     auto bfs = [&](this auto &&bfs, TreeNode *cur, std::string path) {
       if (!cur) {
 
