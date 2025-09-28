@@ -2,10 +2,10 @@
 #include <vector>
 
 class Solution {
-public:
+ public:
   std::vector<std::vector<int>> res;
-  std::vector<std::vector<int>>
-  allPathsSourceTarget(std::vector<std::vector<int>> &graph) {
+  std::vector<std::vector<int>> allPathsSourceTarget(
+      std::vector<std::vector<int>> &graph) {
     int n = graph.size();
     std::vector<int> pass;
     pass.push_back(0);
@@ -13,7 +13,7 @@ public:
     return res;
   }
 
-private:
+ private:
   void dfs(std::vector<std::vector<int>> &graph, std::vector<int> &pass, int i,
            int n) {
     if (i == n - 1) {
